@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="sanrabiGrad" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="50%" stop-color="#0A84FF" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+    <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Outer Rounded Shield / Rounded Rect Subtle Backing -->
+  <rect x="4" y="4" width="92" height="92" rx="24" fill="#0A1124" stroke="url(#sanrabiGrad)" stroke-width="1.5" stroke-opacity="0.5"/>
+  
+  <!-- Sleek Geometric "S" Monogram -->
+  <path d="M68 28 C68 28, 62 22, 50 22 C37 22, 30 29, 30 38 C30 49, 42 52, 53 55 C66 58, 72 63, 72 73 C72 84, 61 90, 48 90 C34 90, 26 83, 26 83 L31 73 C31 73, 38 79, 48 79 C55 79, 61 75, 61 68 C61 60, 52 57, 41 53 C29 49, 20 44, 20 33 C20 23, 32 13, 50 13 C61 13, 74 19, 74 19 Z" 
+        fill="url(#sanrabiGrad)" 
+        filter="url(#glowEffect)" />
+
+  <!-- High-tech circuit accent dots -->
+  <circle cx="71" cy="23" r="2.5" fill="#00F0FF" />
+  <circle cx="28" cy="80" r="2.5" fill="#6366F1" />
+</svg>
