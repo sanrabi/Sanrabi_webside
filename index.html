@@ -405,6 +405,141 @@
     </section>
 
     <!-- =========================================================================
+         Crafted by iOS Developers (Human Engineering Workbench)
+         ========================================================================= -->
+    <section class="xcode-workbench-section" id="ios-craftsmanship">
+      <div class="container">
+        
+        <div class="section-header fade-in-up">
+          <div class="workbench-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+            Human-Crafted iOS Engineering
+          </div>
+          <h2 class="section-title">
+            Engineered Line-by-Line in Swift. <br>
+            <span class="text-gradient">No AI Templates. Pure Native Craft.</span>
+          </h2>
+          <p class="section-subtitle">
+            Every screen, animation, and network layer is handcrafted by senior human iOS developers directly in Xcode using Swift 5.10, SwiftUI, and UIKit.
+          </p>
+        </div>
+
+        <!-- Xcode Workbench Interactive Split Layout -->
+        <div class="workbench-grid fade-in-up">
+          
+          <!-- Left Panel: Xcode Swift IDE Showcase -->
+          <div class="xcode-window">
+            <div class="xcode-titlebar">
+              <div class="xcode-window-dots">
+                <div class="xcode-dot dot-red"></div>
+                <div class="xcode-dot dot-yellow"></div>
+                <div class="xcode-dot dot-green"></div>
+              </div>
+              <div class="xcode-title-text">SANRABIApp.xcodeproj — Swift 5.10 (Xcode 15.4)</div>
+              <div class="xcode-status-badge">
+                <span class="pulse-dot" style="width: 6px; height: 6px;"></span>
+                <span>Build Succeeded (0.38s)</span>
+              </div>
+            </div>
+
+            <!-- Xcode Tabs -->
+            <div class="xcode-tabbar">
+              <button type="button" class="xcode-tab active" data-xcodescreen="xcPayment">
+                <span>PaymentViewModel.swift</span>
+              </button>
+              <button type="button" class="xcode-tab" data-xcodescreen="xcBiometric">
+                <span>BiometricGuard.swift</span>
+              </button>
+              <button type="button" class="xcode-tab" data-xcodescreen="xcMotion">
+                <span>MotionEngine.swift</span>
+              </button>
+            </div>
+
+            <!-- Xcode Code Editor View -->
+            <div class="xcode-code-body" id="xcodeEditorContent">
+              <div class="code-line"><span class="code-num">1</span><span class="code-content"><span class="swift-comment">// Handcrafted for sub-16ms 120Hz ProMotion frame rendering</span></span></div>
+              <div class="code-line"><span class="code-num">2</span><span class="code-content"><span class="swift-kw">import</span> <span class="swift-type">SwiftUI</span></span></div>
+              <div class="code-line"><span class="code-num">3</span><span class="code-content"><span class="swift-kw">import</span> <span class="swift-type">Combine</span></span></div>
+              <div class="code-line"><span class="code-num">4</span><span class="code-content"></span></div>
+              <div class="code-line"><span class="code-num">5</span><span class="code-content">@<span class="swift-type">MainActor</span></span></div>
+              <div class="code-line"><span class="code-num">6</span><span class="code-content"><span class="swift-kw">final class</span> <span class="swift-type">PaymentViewModel</span>: <span class="swift-type">ObservableObject</span> {</span></div>
+              <div class="code-line"><span class="code-num">7</span><span class="code-content">&nbsp;&nbsp;@<span class="swift-type">Published</span> <span class="swift-kw">private(set) var</span> walletBalance: <span class="swift-type">Decimal</span> = <span class="swift-str">42850.00</span></span></div>
+              <div class="code-line"><span class="code-num">8</span><span class="code-content">&nbsp;&nbsp;@<span class="swift-type">Published</span> <span class="swift-kw">private(set) var</span> settlements: [<span class="swift-type">Settlement</span>] = []</span></div>
+              <div class="code-line"><span class="code-num">9</span><span class="code-content"></span></div>
+              <div class="code-line"><span class="code-num">10</span><span class="code-content">&nbsp;&nbsp;<span class="swift-func">func</span> <span class="swift-func">syncTransactions</span>() <span class="swift-kw">async throws</span> {</span></div>
+              <div class="code-line"><span class="code-num">11</span><span class="code-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="swift-kw">let</span> (data, response) = <span class="swift-kw">try await</span> <span class="swift-type">URLSession</span>.shared.data(from: endpoint)</span></div>
+              <div class="code-line"><span class="code-num">12</span><span class="code-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="swift-kw">self</span>.settlements = <span class="swift-kw">try</span> <span class="swift-type">JSONDecoder</span>().decode([<span class="swift-type">Settlement</span>].<span class="swift-kw">self</span>, from: data)</span></div>
+              <div class="code-line"><span class="code-num">13</span><span class="code-content">&nbsp;&nbsp;}</span></div>
+              <div class="code-line"><span class="code-num">14</span><span class="code-content">}</span></div>
+            </div>
+
+          </div>
+
+          <!-- Right Panel: iOS Engineering Interactive Card -->
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px; backdrop-filter: blur(16px);">
+              <div style="font-size: 11px; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">
+                Human Engineer Touch
+              </div>
+              <h3 style="font-size: 24px; font-weight: 800; color: #FFFFFF; margin-bottom: 12px;">
+                Built Like Apple Engineers Build.
+              </h3>
+              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+                We don't rely on generic AI code generators or sluggish web-view wrappers. Every iOS application engineered by SANRABI is architected natively for Apple Silicon, utilizing Swift Concurrency (<code>async/await</code>), Combine, and SwiftUI for maximum battery life and sub-millisecond responsiveness.
+              </p>
+              
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #E2E8F0;">
+                  <span style="color: var(--accent-cyan); font-weight: 700;">✓</span>
+                  <span><strong>Native Swift 5.10 & SwiftUI</strong> — 0% WebView latency</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #E2E8F0;">
+                  <span style="color: var(--accent-cyan); font-weight: 700;">✓</span>
+                  <span><strong>ProMotion 120Hz Fluidity</strong> — Hand-tuned CADisplayLink animations</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #E2E8F0;">
+                  <span style="color: var(--accent-cyan); font-weight: 700;">✓</span>
+                  <span><strong>Bank-Grade Secure Enclave</strong> — Face ID & Keychain cryptography</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 4 Human Engineering Performance Indicators -->
+        <div class="human-metrics-grid fade-in-up">
+          
+          <div class="human-metric-card">
+            <div class="human-metric-val">100%</div>
+            <div class="human-metric-lbl">Pure Native iOS</div>
+            <div class="human-metric-desc">Zero cross-platform overhead or bloated web engines.</div>
+          </div>
+
+          <div class="human-metric-card">
+            <div class="human-metric-val">120Hz</div>
+            <div class="human-metric-lbl">ProMotion Smoothness</div>
+            <div class="human-metric-desc">Handcrafted frame budgets for sub-16ms touch response.</div>
+          </div>
+
+          <div class="human-metric-card">
+            <div class="human-metric-val">MVVM</div>
+            <div class="human-metric-lbl">Clean Architecture</div>
+            <div class="human-metric-desc">Decoupled reactive data flows with 90%+ unit test coverage.</div>
+          </div>
+
+          <div class="human-metric-card">
+            <div class="human-metric-val">iOS 17+</div>
+            <div class="human-metric-lbl">Apple Human Interface</div>
+            <div class="human-metric-desc">Built strictly to Cupertino HIG design standards.</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
          Services Section ("What We Build")
          ========================================================================= -->
     <section class="section" id="services">

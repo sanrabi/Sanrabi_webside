@@ -295,5 +295,65 @@ document.addEventListener('DOMContentLoaded', () => {
     resize();
     animate();
   }
+
+  // 10. Xcode IDE Interactive File Tab Switcher
+  const xcodeTabs = document.querySelectorAll('.xcode-tab');
+  const xcodeEditorContent = document.getElementById('xcodeEditorContent');
+
+  const swiftCodeSnippets = {
+    xcPayment: `
+<div class="code-line"><span class="code-num">1</span><span class="code-content"><span class="swift-comment">// Handcrafted for sub-16ms 120Hz ProMotion frame rendering</span></span></div>
+<div class="code-line"><span class="code-num">2</span><span class="code-content"><span class="swift-kw">import</span> <span class="swift-type">SwiftUI</span></span></div>
+<div class="code-line"><span class="code-num">3</span><span class="code-content"><span class="swift-kw">import</span> <span class="swift-type">Combine</span></span></div>
+<div class="code-line"><span class="code-num">4</span><span class="code-content"></span></div>
+<div class="code-line"><span class="code-num">5</span><span class="code-content">@<span class="swift-type">MainActor</span></span></div>
+<div class="code-line"><span class="code-num">6</span><span class="code-content"><span class="swift-kw">final class</span> <span class="swift-type">PaymentViewModel</span>: <span class="swift-type">ObservableObject</span> {</span></div>
+<div class="code-line"><span class="code-num">7</span><span class="code-content">&nbsp;&nbsp;@<span class="swift-type">Published</span> <span class="swift-kw">private(set) var</span> walletBalance: <span class="swift-type">Decimal</span> = <span class="swift-str">42850.00</span></span></div>
+<div class="code-line"><span class="code-num">8</span><span class="code-content">&nbsp;&nbsp;@<span class="swift-type">Published</span> <span class="swift-kw">private(set) var</span> settlements: [<span class="swift-type">Settlement</span>] = []</span></div>
+<div class="code-line"><span class="code-num">9</span><span class="code-content"></span></div>
+<div class="code-line"><span class="code-num">10</span><span class="code-content">&nbsp;&nbsp;<span class="swift-func">func</span> <span class="swift-func">syncTransactions</span>() <span class="swift-kw">async throws</span> {</span></div>
+<div class="code-line"><span class="code-num">11</span><span class="code-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="swift-kw">let</span> (data, response) = <span class="swift-kw">try await</span> <span class="swift-type">URLSession</span>.shared.data(from: endpoint)</span></div>
+<div class="code-line"><span class="code-num">12</span><span class="code-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="swift-kw">self</span>.settlements = <span class="swift-kw">try</span> <span class="swift-type">JSONDecoder</span>().decode([<span class="swift-type">Settlement</span>].<span class="swift-kw">self</span>, from: data)</span></div>
+<div class="code-line"><span class="code-num">13</span><span class="code-content">&nbsp;&nbsp;}</span></div>
+<div class="code-line"><span class="code-num">14</span><span class="code-content">}</span></div>`,
+    xcBiometric: `
+<div class="code-line"><span class="code-num">1</span><span class="code-content"><span class="swift-comment">// Bank-grade FaceID authentication via Apple LocalAuthentication</span></span></div>
+<div class="code-line"><span class="code-num">2</span><span class="code-content"><span class="swift-kw">import</span> <span class="swift-type">LocalAuthentication</span></span></div>
+<div class="code-line"><span class="code-num">3</span><span class="code-content"></span></div>
+<div class="code-line"><span class="code-num">4</span><span class="code-content"><span class="swift-kw">struct</span> <span class="swift-type">BiometricGuard</span> {</span></div>
+<div class="code-line"><span class="code-num">5</span><span class="code-content">&nbsp;&nbsp;<span class="swift-kw">static func</span> <span class="swift-func">evaluateFaceID</span>() <span class="swift-kw">async -> Bool</span> {</span></div>
+<div class="code-line"><span class="code-num">6</span><span class="code-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="swift-kw">let</span> context = <span class="swift-type">LAContext</span>()</span></div>
+<div class="code-line"><span class="code-num">7</span><span class="code-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="swift-kw">var</span> error: <span class="swift-type">NSError</span>?</span></div>
+<div class="code-line"><span class="code-num">8</span><span class="code-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="swift-kw">guard</span> context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) <span class="swift-kw">else</span> { <span class="swift-kw">return false</span> }</span></div>
+<div class="code-line"><span class="code-num">9</span><span class="code-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="swift-kw">return try await</span> context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: <span class="swift-str">"Authenticate to access Secure Enclave"</span>)</span></div>
+<div class="code-line"><span class="code-num">10</span><span class="code-content">&nbsp;&nbsp;}</span></div>
+<div class="code-line"><span class="code-num">11</span><span class="code-content">}</span></div>`,
+    xcMotion: `
+<div class="code-line"><span class="code-num">1</span><span class="code-content"><span class="swift-comment">// Custom Metal & SwiftUI 120Hz display link animation engine</span></span></div>
+<div class="code-line"><span class="code-num">2</span><span class="code-content"><span class="swift-kw">import</span> <span class="swift-type">SwiftUI</span></span></div>
+<div class="code-line"><span class="code-num">3</span><span class="code-content"><span class="swift-kw">import</span> <span class="swift-type">QuartzCore</span></span></div>
+<div class="code-line"><span class="code-num">4</span><span class="code-content"></span></div>
+<div class="code-line"><span class="code-num">5</span><span class="code-content"><span class="swift-kw">struct</span> <span class="swift-type">MotionEngine</span>: <span class="swift-type">ViewModifier</span> {</span></div>
+<div class="code-line"><span class="code-num">6</span><span class="code-content">&nbsp;&nbsp;@<span class="swift-type">State</span> <span class="swift-kw">private var</span> phase: <span class="swift-type">CGFloat</span> = <span class="swift-str">0</span></span></div>
+<div class="code-line"><span class="code-num">7</span><span class="code-content">&nbsp;&nbsp;<span class="swift-func">func</span> <span class="swift-func">body</span>(content: <span class="swift-type">Content</span>) -> <span class="swift-kw">some</span> <span class="swift-type">View</span> {</span></div>
+<div class="code-line"><span class="code-num">8</span><span class="code-content">&nbsp;&nbsp;&nbsp;&nbsp;content.scaleEffect(1 + sin(phase) * <span class="swift-str">0.02</span>)</span></div>
+<div class="code-line"><span class="code-num">9</span><span class="code-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.animation(.interpolatingSpring(stiffness: <span class="swift-str">300</span>, damping: <span class="swift-str">15</span>), value: phase)</span></div>
+<div class="code-line"><span class="code-num">10</span><span class="code-content">&nbsp;&nbsp;}</span></div>
+<div class="code-line"><span class="code-num">11</span><span class="code-content">}</span></div>`
+  };
+
+  if (xcodeTabs.length > 0 && xcodeEditorContent) {
+    xcodeTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const snippetKey = tab.getAttribute('data-xcodescreen');
+        xcodeTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        if (swiftCodeSnippets[snippetKey]) {
+          xcodeEditorContent.innerHTML = swiftCodeSnippets[snippetKey];
+        }
+      });
+    });
+  }
 });
 
