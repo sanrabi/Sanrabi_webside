@@ -152,4 +152,148 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.fade-in-up').forEach(el => {
     revealObserver.observe(el);
   });
+
+  // 7. Dedicated Face ID Test in Biometric View
+  const authTestBtn = document.getElementById('authTestBtn');
+  const authStatusText = document.getElementById('authStatusText');
+  if (authTestBtn && authStatusText) {
+    authTestBtn.addEventListener('click', () => {
+      authStatusText.innerHTML = '<span style="color: #00F0FF;">Scanning Face ID...</span>';
+      authTestBtn.disabled = true;
+      setTimeout(() => {
+        authStatusText.innerHTML = '<span style="color: #34D399;">✓ Face ID Verified via Secure Enclave</span>';
+        authTestBtn.disabled = false;
+      }, 900);
+      setTimeout(() => {
+        authStatusText.innerHTML = 'Ready to authenticate';
+      }, 4000);
+    });
+  }
+
+  // 8. 3D Tilt Effect on Service & Technology Cards
+  const tiltCards = document.querySelectorAll('.service-card, .tech-card, .why-card');
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -5;
+      const rotateY = ((x - centerX) / centerX) * 5;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  // 9. Interactive Particle Constellation Canvas
+  const canvas = document.getElementById('heroParticles');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let width = 0;
+    let height = 0;
+    let mouse = { x: -1000, y: -1000, radius: 120 };
+
+    const resize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      initParticles();
+    };
+
+    window.addEventListener('resize', resize, { passive: true });
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    }, { passive: true });
+
+    window.addEventListener('mouseleave', () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.size = Math.random() * 1.8 + 0.8;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0) this.y = height;
+        if (this.y > height) this.y = 0;
+
+        // Subtle mouse push
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          this.x -= (dx / dist) * force * 1.5;
+          this.y -= (dy / dist) * force * 1.5;
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 240, 255, 0.5)';
+        ctx.fill();
+      }
+    }
+
+    const initParticles = () => {
+      particles = [];
+      const count = Math.min(Math.floor((width * height) / 28000), 55);
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw constellation links
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 110) {
+            const alpha = (1 - dist / 110) * 0.15;
+            ctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      requestAnimationFrame(animate);
+    };
+
+    resize();
+    animate();
+  }
 });
+
