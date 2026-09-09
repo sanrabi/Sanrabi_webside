@@ -2,13 +2,13 @@
 
 > **"Build. Innovate. Grow."**
 
-A premium, modern, and high-performance corporate website for **SANRABI Technologies**, a mobile application development company specializing strictly in native Apple ecosystem solutions (iOS, Swift, SwiftUI, UIKit, Xcode, REST APIs, Firebase, and MVVM Architecture).
+A premium, modern, and high-performance corporate website for **SANRABI Technologies**, a mobile application development company specializing in iOS, Android and Flutter products, with REST API and Firebase integrations.
 
 ---
 
 ## 📱 Tech Stack & Highlights
 
-- **Strict Mobile Focus**: 100% focused on native iOS and mobile application development.
+- **Core Mobile Focus**: Equal emphasis on native iOS, native Android and Flutter cross-platform development.
 - **Visual Design**: Dark navy, midnight glassmorphism, electric cyan accents, subtle ambient glows, and Apple-inspired typography.
 - **Hardware Mockups**: Custom high-fidelity CSS/SVG iPhone 16 Pro mockup featuring:
   - Dynamic Island with active status indicator
